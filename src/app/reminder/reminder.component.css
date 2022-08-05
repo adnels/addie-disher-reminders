@@ -1,0 +1,15 @@
+.container {
+  background-color: ghostwhite;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+}
+
+.header {
+  background-color: gainsboro;
+  padding: 1rem;
+}
+
+.content {
+  padding: 1rem;
+
+}

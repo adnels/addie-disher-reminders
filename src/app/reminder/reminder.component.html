@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="header">
+    <div *ngIf="displayReminder.isEditing; then editDate; else viewDate;"></div>
+    <ng-template #editDate>
+      <input type="date"
+             [ngModel]="displayReminder.date | date : 'yyyy-MM-dd'"
+             (ngModelChange)="onDateChange($event)"
+      />
+    </ng-template>
+    <ng-template #viewDate>
+      <div class="date">{{displayReminder.date | date}}</div>
+    </ng-template>
+
+    <div *ngIf="displayReminder.isEditing; then finishedEdit; else finishedView"></div>
+    <ng-template #finishedEdit>
+      <label>
+        Finished:
+        <input [(ngModel)]="displayReminder.isFinished" type="checkbox">
+      </label>
+    </ng-template>
+    <ng-template #finishedView>
+      <div>{{displayReminder.isFinished ? "Finished" : "To-do"}}</div>
+    </ng-template>
+  </div>
+
+  <div class="content">
+
+    <!--    <div *ngIf="!reminder.isEditing">{{reminder.text}}</div>-->
+    <!--    <input *ngIf="reminder.isEditing"/>-->
+
+    <div *ngIf="displayReminder.isEditing; then editContent; else viewContent;"></div>
+    <ng-template #editContent>
+      <input type="text" [(ngModel)]="displayReminder.text"/>
+    </ng-template>
+    <ng-template #viewContent>
+      {{displayReminder.text}}
+    </ng-template>
+
+  </div>
+
+  <div class="footer">
+    <button *ngIf="!displayReminder.isEditing" (click)="onEdit()">Edit</button>
+    <button *ngIf="displayReminder.isEditing" (click)="onSave()">Save</button>
+    <button *ngIf="reminder.isEditing" (click)="cancelEdit()">Cancel Edit</button>
+    <button (click)="onDelete()">Delete</button>
+  </div>
+
+</div>
