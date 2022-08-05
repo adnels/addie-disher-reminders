@@ -2,15 +2,26 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { CounterComponent } from './counter/counter.component';
+import { ReminderComponent } from './reminder/reminder.component';
+import { CountupComponent } from './countup/countup.component';
+import { FormsModule } from '@angular/forms';
+import {DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CounterComponent,
+    ReminderComponent,
+    CountupComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
